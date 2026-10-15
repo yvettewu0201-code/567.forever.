@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>567.forever.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f5f0e6;
+    color: #171513;
+    font-family: "Noto Sans TC", sans-serif;
+    overflow-x: hidden;
+}
+
+/* 復古紙張背景 */
+.page {
+    max-width: 1050px;
+    margin: auto;
+    padding: 24px 30px 35px;
+    position: relative;
+    background-color: #f8f5ed;
+    background-image:
+        radial-gradient(#d8d0c2 0.6px, transparent 0.8px),
+        radial-gradient(#ffffff 0.7px, transparent 1px);
+    background-size: 7px 7px, 11px 11px;
+}
+
+/* 頂部手寫裝飾 */
+.love {
+    text-align: center;
+    color: #b62b25;
+    font-family: cursive;
+    font-size: 35px;
+    font-weight: bold;
+    font-style: italic;
+    transform: rotate(-8deg);
+    margin: 0 auto 15px;
+}
+
+/* 小標題列 */
+.topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: clamp(10px, 2vw, 18px);
+    padding-bottom: 10px;
+    border-bottom: 6px double #171513;
+}
+
+/* 主標題 */
+h1 {
+    text-align: center;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(43px, 10vw, 108px);
+    letter-spacing: 1px;
+    line-height: 1.35;
+    white-space: nowrap;
+    border-bottom: 6px double #171513;
+}
+
+.subtitle {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: clamp(22px, 5vw, 48px);
+    letter-spacing: 8px;
+    padding: 18px 0 25px;
+}
+
+/* 照片區 */
+.photo {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid #ddd3c3;
+}
+
+.main-photo img {
+    aspect-ratio: 1.65 / 1;
+    object-position: center;
+}
+
+.doodle {
+    position: absolute;
+    z-index: 2;
+    color: #b52825;
+    font-family: cursive;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.heart-left {
+    top: -42px;
+    left: -18px;
+    font-size: 95px;
+    transform: rotate(-15deg);
+}
+
+.love-note {
+    right: 10px;
+    bottom: 12px;
+    font-family: cursive;
+    font-style: italic;
+    font-size: clamp(15px, 3vw, 29px);
+    line-height: 1.05;
+    transform: rotate(-7deg);
+    text-shadow: 0 1px #f8f5ed;
+}
+
+/* 第二組照片及文字 */
+.memory-row {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 28px;
+    align-items: center;
+    margin: 25px 0 35px;
+}
+
+.second-photo img {
+    aspect-ratio: 0.78 / 1;
+    object-position: center;
+}
+
+.message {
+    position: relative;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.message h2 {
+    font-size: clamp(17px, 3.5vw, 29px);
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 16px;
+    white-space: nowrap;
+}
+
+.message p {
+    font-size: clamp(13px, 2.5vw, 19px);
+    line-height: 2.2;
+    letter-spacing: 1px;
+    color: #36312d;
+}
+
+.little-heart {
+    position: absolute;
+    left: -12px;
+    top: 5px;
+    color: #b52825;
+    font-size: 29px;
+    transform: rotate(-15deg);
+}
+
+.bottom-line {
+    border-top: 6px double #171513;
+    height: 22px;
+    margin-top: 25px;
+}
+
+.footer {
+    text-align: center;
+    color: #b52825;
+    font-family: cursive;
+    font-size: 28px;
+    font-style: italic;
+    padding: 8px 0;
+}
+
+/* 手機版 */
+@media (max-width: 600px) {
+    .page {
+        padding: 18px 16px 25px;
+    }
+
+    .love {
+        font-size: 29px;
+    }
+
+    .topline {
+        font-size: 10px;
+        border-bottom-width: 5px;
+    }
+
+    h1 {
+        letter-spacing: 0;
+        border-bottom-width: 5px;
+    }
+
+    .subtitle {
+        letter-spacing: 5px;
+        padding: 15px 0 20px;
+    }
+
+    .memory-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .message h2 {
+        white-space: normal;
+        line-height: 1.8;
+    }
+
+    .message p {
+        letter-spacing: 0;
+        line-height: 2;
+    }
+
+    .heart-left {
+        font-size: 65px;
+        left: -12px;
+        top: -28px;
+    }
+
+    .love-note {
+        font-size: 14px;
+        right: 5px;
+        bottom: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+    <div class="love">Love ♡</div>
+
+    <div class="topline">
+        <span>Good Vibes</span>
+        <span>One Amazing You</span>
+        <span>Great Stories</span>
+    </div>
+
+    <h1>567.forever.</h1>
+
+    <div class="subtitle">fxsh.love.</div>
+
+    <!-- 第一張大合照：把 images/group.jpg 換成你的照片路徑 -->
+    <div class="photo main-photo">
+        <span class="doodle heart-left">♡</span>
+
+        <img src="images/group.jpg"
+             alt="我們的回憶大合照">
+
+        <div class="doodle love-note">
+            falling in<br>
+            love with you ♡
+        </div>
+    </div>
+
+    <div class="memory-row">
+
+        <!-- 第二張照片 -->
+        <div class="photo second-photo">
+            <img src="images/memory.jpg"
+                 alt="我們的日常回憶">
+        </div>
+
+        <!-- 簡短的友情文字 -->
+        <div class="message">
+            <span class="little-heart">♥</span>
+
+            <h2>我們要永遠在一起!!</h2>
+
+            <p>
+                不管遇到多大的事<br>
+                都要永遠黏死<br>
+                畢竟我們是鐵三角啊
+            </p>
+        </div>
+
+    </div>
+
+    <div class="bottom-line"></div>
+
+    <div class="footer">567 ♡ forever</div>
+
+</div>
+</body>
+</html>
