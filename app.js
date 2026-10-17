@@ -278,3 +278,33 @@ $('#messageForm').onsubmit = e => {
   input.value = '';
   renderMessages();
 };
+(async () => {
+  if (!location.hash.includes('access_token=')) return;
+
+  const { createClient } = await import(
+    'https://esm.sh/@supabase/supabase-js@2'
+  );
+  const { SUPABASE_URL, SUPABASE_ANON_KEY } = await import('./config.js');
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const params = new URLSearchParams(location.hash.slice(1));
+  const { error: sessionError } = await supabase.auth.setSession({
+    access_token: params.get('access_token'),
+    refresh_token: params.get('refresh_token')
+  });
+
+  if (sessionError) {
+    alert('重設連結已失效，請重新寄送。');
+    return;
+  }
+
+  history.replaceState(null, '', location.pathname);
+
+  const password = prompt('請輸入要設定的新密碼（至少 6 個字元）：');
+  if (!password) return;
+
+  const { error } = await supabase.auth.updateUser({ password });
+
+  alert(error ? '設定失敗：' + error.message : '密碼設定成功！');
+  await supabase.auth.signOut();
+})();
